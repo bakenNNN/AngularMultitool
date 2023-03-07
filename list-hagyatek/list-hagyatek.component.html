@@ -1,0 +1,53 @@
+
+<div class="content">
+    <table>
+        <tr>
+            <td >
+                <img src="../../assets/img/icoico.ico" width="50px" height="50px" style=" padding-top: -20px;">
+            </td>
+            <td width="500">
+                <span class="input">
+                   
+        <input  type="text" id="myInput" (keyup)="func()" placeholder="keresés...">
+        </span>
+            </td>
+            <td>
+                <form>
+                    <label style="padding-right: 5px;" for="ev">Szűrés mappa szerint:</label>
+                    <select id="ev" name="ev" #evek (change)="FilterValues(evek.value)">
+                      <option value="1977/1">1977/1</option>
+                      <option value="1977/2">1977/2</option>
+                      <option value="1985/1">1985/1</option>
+                      <option value="1985/2">1985/2</option>
+                    </select>
+                  </form>
+                  <script src="script.js"></script>
+            </td>
+        </tr>
+    </table>
+    <table id="myTable" class="table">
+
+            <tr class="header">
+                <th scope ="col">Mappa</th>
+                <th scope ="col">Név</th>
+                <th scope ="col">Lakhely</th>
+                <th scope ="col">Született</th>
+                <th scope ="col">Meghalt</th>
+                <th scope ="col">Foglalkozása</th>
+            </tr>
+
+
+
+
+<tbody id="adatok">
+    <tr *ngFor=" let hagy of hagyatek;">
+        <td id="els">{{hagy.mappa}}</td>
+        <td id="els">{{hagy.nev}}</td>
+        <td id ="els">{{hagy.lakhely}}</td>
+        <td id="els">{{hagy.szuletett}}</td>
+        <td id="els">{{hagy.meghalt}}</td>
+        <td id="els">{{hagy.foglalkozasa}}</td>
+    </tr>
+
+</tbody>
+

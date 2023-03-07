@@ -1,0 +1,20 @@
+
+<div class="content">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope ="col">#</th>
+                <th scope ="col">Savanyito</th>
+                <th scope ="col">Tetelek</th>
+                <th scope ="col">Szamolas</th>
+            </tr>
+        </thead>
+    
+    <tbody >
+        <tr *ngFor=" let bev of bevetel; let i = index">
+            <th scope ="row"> {{ bev.honap}}</th>
+            <td style="white-space:pre-wrap">{{bev.savanyito}}</td>
+            <td style="white-space:pre-wrap">{{bev.tetelek}}</td>
+            <td style="white-space:pre-wrap">{{bev.szamolas}}</td>
+            </tr>
+    </tbody>

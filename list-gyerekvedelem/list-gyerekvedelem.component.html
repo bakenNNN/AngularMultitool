@@ -1,0 +1,36 @@
+
+<div class="content">
+    <table>
+        <tr>
+            <td >
+                <img src="../../assets/img/icoico.ico" width="50px" height="50px" style=" padding-top: -20px;">
+            </td>
+            <td width="500">
+                <span class="input">
+                   
+        <input  type="text" id="myInput" (keyup)="func()" placeholder="keresés...">
+        </span>
+            </td>
+        </tr>
+    </table>
+    <table id="myTable" class="table">
+
+            <tr class="header">
+                <th scope ="col">#</th>
+                <th scope ="col">Ügyfél</th>
+                <th scope ="col">Határozatszám</th>
+                <th scope ="col">Tipus</th>
+            </tr>
+
+
+
+
+<tbody id="adatok">
+    <tr *ngFor=" let gyerekvedel of gyerekvedelem;">
+        <td id="els">{{ gyerekvedel.sorszam}}</td>
+        <td id="els">{{gyerekvedel.kepviselo}}</td>
+        <td id ="els">{{gyerekvedel.hatarozatszam}}</td>
+        <td id="els">{{gyerekvedel.tipus}}</td>
+    </tr>
+
+</tbody>

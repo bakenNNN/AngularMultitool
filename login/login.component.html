@@ -1,0 +1,24 @@
+
+<mat-card>
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser()" type="">
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input autocomplete="off" formControlName="email" type="email" style="color: black" matInput placeholder="Email">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>Jelszó</mat-label>
+                <input autocomplete="off" formControlName="password" style="color:black" type="password" matInput placeholder="Password">
+            </mat-form-field>
+        </p>
+        
+
+        <button mat-raised-button color="primary">Belépés</button>
+    </form>
+    
+</mat-card>
+
+    
+

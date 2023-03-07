@@ -1,0 +1,76 @@
+<body>
+<div class="content">
+    <div style="width: 100%; overflow-x: auto;">
+    <table>
+        <tr>
+            <td >
+                <img src="../../assets/img/icoico.ico" width="50px" height="50px" style=" padding-top: -20px;">
+            </td>
+            <td width="50">
+                <span class="input">
+                   
+        <input  type="text" id="myInput" (keyup)="func()" placeholder="keresés...">
+        </span>
+            </td>
+            <td><label style="padding-right: 5px;">1 hónapon belül lejárók: </label></td>
+            <td>
+                <div>
+                    <!-- Toggle Button Style 23 -->
+                    <label class="toggler-wrapper style-23">
+                      <input type="checkbox" (change)="ShowOnlyRed($event)" value="angular" />
+                      <div class="toggler-slider">
+                        <div class="toggler-knob">
+                        </div>
+                      </div>
+                    </label>
+                </div>
+            </td>
+            <td style="padding-left: 70px; padding-right: 5px;"><label>3 hónapon belül lejárók: </label></td>
+            <td>
+                
+                <div>
+                    <!-- Toggle Button Style 23 -->
+                    <label class="toggler-wrapper style-23">
+                      <input type="checkbox" (change)="ShowOnlyYellow($event)" value="angular" />
+                      <div class="toggler-slider">
+                        <div class="toggler-knob">
+                        </div>
+                      </div>
+                    </label>
+                </div>
+            </td>
+        </tr>
+    </table>
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th scope ="col">#</th>
+            <th scope ="col">Név</th>
+            <th scope ="col">Születési hely</th>
+            <th scope ="col">Program</th>
+            <th scope ="col">Szabadnapok</th>
+            <th scope ="col">Orvosi lejár</th>
+            <th scope ="col">Anyja neve</th>
+        </tr>
+    </thead>
+
+<tbody id="adatok">
+    <tr *ngFor=" let kozfogis of kozfogisok; let i = index">
+        <th scope ="row"> {{ i + 1}}</th>
+        <td>{{kozfogis.Neev}}</td>
+        <td>{{kozfogis.SzuletesiHely}}</td>
+        <td>{{kozfogis.program}}</td>
+        <td>{{kozfogis.Szabadnapok}}</td>
+        <td>{{kozfogis.Orvosi}}</td>
+        <td>{{kozfogis.Anyja}}</td>
+        <td>
+            <span routerLink="/kozfogis-pdf/{{kozfogis.Neev}}" class="btn btn-info" style="margin: 5px;">Szerződés</span>
+            <span (click)="removeKozfogis(kozfogis)" class="btn btn-danger" style="margin: 5px;">Törlés</span>
+            <span routerLink="/update-kozfogis/{{kozfogis.id}}" class="btn btn-primary" style="margin: 5px;">Módositás</span>
+        </td>
+    </tr>
+</tbody>
+</table>
+    </div>
+</div>
+</body>

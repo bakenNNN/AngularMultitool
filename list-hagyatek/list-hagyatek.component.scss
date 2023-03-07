@@ -1,0 +1,198 @@
+@import '~compass-mixins/lib/compass/css3';
+
+@import '~compass-mixins/lib/compass';
+@import url("https://fonts.googleapis.com/css?family=Lato");
+$background: #e74c3c;
+$select-color: #fff;
+$select-background: #c0392b;
+$select-width: 220px;
+$select-height: 40px; 
+.input {
+	
+	// needs to be relative so the :focus span is positioned correctly
+	position:relative;
+
+	// bigger font size for demo purposes
+	font-size: 1.5em;
+	
+	// the border gradient
+	background: linear-gradient(21deg, #10abff, #1beabd);
+	
+	// the width of the input border
+	padding: 3px;
+	
+	// we want inline fields by default
+	display: inline-block;
+	
+	// we want rounded corners no matter the size of the field
+	border-radius: 9999em;
+	
+	// style of the actual input field
+	*:not(span) {
+		position: relative;
+		display: inherit;
+		border-radius: inherit;
+		margin: 0;
+		border: none;
+		outline: none;
+		padding: 0 .325em;
+		z-index: 1; // needs to be above the :focus span
+		
+		// summon fancy shadow styles when focussed
+		&:focus + span {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+	
+	// we don't animate box-shadow directly as that can't be done on the GPU, only animate opacity and transform for high performance animations.
+	span {
+		
+		transform: scale(.993, .94); // scale it down just a little bit
+		transition: transform .5s, opacity .25s;
+		opacity: 0; // is hidden by default
+		
+		position:absolute;
+		z-index: 0; // needs to be below the field (would block input otherwise)
+		margin:4px; // a bit bigger than .input padding, this prevents background color pixels shining through
+		left:0;
+		top:0;
+		right:0;
+		bottom:0;
+		border-radius: inherit;
+		pointer-events: none; // this allows the user to click through this element, as the shadow is rather wide it might overlap with other fields and we don't want to block those.
+		
+		// fancy shadow styles
+		box-shadow: inset 0 0 0 3px #fff,
+			0 0 0 4px #fff,
+			3px -3px 30px #1beabd, 
+			-3px 3px 30px #10abff;
+	}
+	
+}
+
+html {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	line-height:1.5;
+	font-size:1em;
+}
+
+body {
+	text-align: center;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+
+html, body {
+	height:100%;
+}
+
+input {
+	font-family: inherit;
+	line-height:inherit;
+	color:#2e3750;
+	min-width:12em;
+}
+
+::placeholder {
+	color:#cbd0d5;
+}
+
+html::after {
+	content:'';
+	background: linear-gradient(21deg, #10abff, #1beabd);
+	height:3px;
+	width:100%;
+	position:absolute;
+	left:0;
+	top:0;
+}
+p {
+	margin-top: 200px;
+	a {
+	  text-transform: uppercase;
+	  text-decoration: none;
+	  display: inline-block;
+	  color: #fff;
+	  padding: 5px 10px;
+	  margin: 0 5px;
+	  background-color: darken($select-background, 2);
+	  @include transition(all 0.2s ease-in);
+	  &:hover {
+		background-color: darken($select-background, 5);
+	  }
+	}
+  }
+  .select-hidden {
+	display: none;
+	visibility: hidden;
+	padding-right: 10px;
+  }
+  .select {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	font-size: 16px;
+	color: $select-color;
+	width: $select-width;
+	height: $select-height;
+  }
+  .select-styled {
+	position: absolute; 
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: $select-background;
+	padding: 8px 15px;
+	@include transition(all 0.2s ease-in);
+	&:after {
+	  content:"";
+	  width: 0;
+	  height: 0;
+	  border: 7px solid transparent;
+	  border-color: $select-color transparent transparent transparent;
+	  position: absolute;
+	  top: 16px;
+	  right: 10px;
+	}
+	&:hover {
+	  background-color: darken($select-background, 2);
+	}
+	&:active, &.active {
+	  background-color: darken($select-background, 5);
+	  &:after {
+		top: 9px;
+		border-color: transparent transparent $select-color transparent;
+	  }
+	}
+  }
+  
+  .select-options {
+	display: none; 
+	position: absolute;
+	top: 100%;
+	right: 0;
+	left: 0;
+	z-index: 999;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	background-color: darken($select-background, 5);
+	li {
+	  margin: 0;
+	  padding: 12px 0;
+	  text-indent: 15px;
+	  border-top: 1px solid darken($select-background, 10);
+	  @include transition(all 0.15s ease-in);
+	  &:hover, 
+	  &.is-selected {
+		color: $select-background;
+		background: $select-color;
+	  }
+	  &[rel="hide"] {
+		display: none;
+	  }
+	}
+  }
