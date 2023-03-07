@@ -1,0 +1,45 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<div class="content">
+<figure class="highcharts-figure">
+  <div id="container"></div>
+  <button (click)="valtas23ra()" style="padding-right: 10px;">2023</button>
+  <button (click)="valtas22re()">2022</button>
+  <table id="datatable" style="display: none;">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Összes Bevétel</th>
+        <th>Savanyító Bevétel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor=" let begraf of bevetelgrafvalt;">
+        <th>{{begraf.honapGraf}}</th>
+        <td>{{begraf.osszesbev}}</td>
+        <td>{{begraf.savabev}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <table id="datatable23" style="display: none;">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Összes Bevétel</th>
+        <th>Savanyító Bevétel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor=" let begraf23 of bevetelgrafvalt23;">
+        <th>{{begraf23.honapGraf23}}</th>
+        <td>{{begraf23.osszesbev23}}</td>
+        <td>{{begraf23.savabev23}}</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+</div>

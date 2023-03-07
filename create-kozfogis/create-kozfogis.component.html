@@ -1,0 +1,36 @@
+<div class="content">
+    <form [formGroup]="kozfogiForm" (ngSubmit)="onSubmit()" novalidate>
+     <div class=" mb-3">
+        <label>Név</label>
+        <input type="text" formControlName="Neev" class="form-control" placeholder="Teljes név" required>
+     </div>
+    <div class="mb-3">
+        <label>Születési hely</label>
+        <input type="text" formControlName ="SzuletesiHely" class="form-control" placeholder="Születési hely" required>
+    </div>
+    <div class="mb-3">
+        <label for="név">Program</label>
+        <select class ="form-control form-select form-select-lg mb-3" formControlName="program" placeholder="..." required>
+            <option style="color:black" value="Helyi" selected>Helyi</option>
+            <option style="color:black" value="Hosszabb idejű" selected>Hosszabb idejű</option>
+            <option style="color:black" value="Szociális" selected>Szociális</option>
+            <option style="color:black" value="Mezőgazdaság" selected>Mezőgazdaság</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Szabadnapok</label>
+        <input type="text" formControlName ="Szabadnapok" class="form-control" placeholder="Szabadnapok" required>
+    </div>
+    <div class="mb-3">
+        <label>Orvosi lejár</label>
+        <input type="text" formControlName ="Orvosi" class="form-control" placeholder="Orvosi lejár" required>
+    </div>
+    <div class="mb-3">
+        <label>Anyja neve</label>
+        <input type="text" formControlName ="Anyja" class="form-control" placeholder="Anyja neve" required>
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary" [disabled]="!kozfogiForm.valid" style="margin: 5px;">Létrehozás</button>
+        &nbsp; &nbsp; &nbsp; &nbsp;
+        <button type="reset" class="btn btn-danger" style="margin: 5px;">Mégse</button>
+    </div>
